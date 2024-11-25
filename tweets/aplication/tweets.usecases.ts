@@ -1,3 +1,4 @@
+import Usuario from "../../usuarios/domain/Usuario";
 import Tweet from "../domain/Tweet";
 import tweetsRepository from "../domain/tweets.repository";
 
@@ -32,21 +33,33 @@ export default class tweetsUsecases{
         }
     }
 
-    async postTweet(tweet : Tweet) : Promise <Tweet>{
+    async  getBorradrores(usuario : Usuario): Promise<Tweet[]> {
         try {
-            return this.tweetsRepository.postTweet(tweet);
+            return this.tweetsRepository.getBorradrores(usuario);
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }
 
-    async putTweet(tweet : Tweet) : Promise <Tweet>{
+    guardarTweet(tweet: Tweet): Promise<Tweet> {
+        try {
+            return this.tweetsRepository.guardarTweet(tweet);
+        } catch (error) {
+            throw error
+        }
+    }
+    postTweet(tweet: Tweet): Promise<Tweet> {
         try {
             return this.tweetsRepository.postTweet(tweet);
         } catch (error) {
-            console.error(error);
-            throw error;
+            throw error
+        }
+    }
+    publicarTweet(tweet: Tweet): Promise<Tweet> {
+        try {
+            return this.tweetsRepository.publicarTweet(tweet);
+        } catch (error) {
+            throw error
         }
     }
 
